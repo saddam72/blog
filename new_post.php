@@ -24,8 +24,8 @@ if ($_POST) {
   $content=$_POST['content'];
   $target = "Upload/".basename($_FILES['image']['name']);
 
-  $sql="INSERT INTO post(title, user_id, category, author, image, content)
-  VALUES('$title', '$user_id', '$category', '$admin', '$image', '$content')";
+  $sql="INSERT INTO post(datetime,title, user_id, category, author, image, content)
+  VALUES('$datetime','$title', '$user_id', '$category', '$admin', '$image', '$content')";
   move_uploaded_file($_FILES['image']['tmp_name'],$target);
 
   if (mysqli_query($conn, $sql))

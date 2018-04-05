@@ -45,6 +45,11 @@ if(!isset($_SESSION['login']))
 		<?php
 		include "db_controller.php";
 		if(isset($_POST["searchbutton"])) {
+		   /*date_default_timezone_set("Asia/Dhaka");
+            $currenttime = time();
+            //$datetime = strftime("%y-%m-%d %H:%M:%S", $currenttime);
+            $datetime = strftime("%B-%d-%Y %H:%M:%S", $currenttime);
+            $datetime; */
 			$search=$_POST["search"];
 
 			//var_dump($search);
@@ -72,9 +77,9 @@ if(!isset($_SESSION['login']))
 				echo '<h4>'.$row["title"] . '</h4>';
 				echo "<hr>";
 				echo '<h5>'.$row["category"] .'</h5>';
-				echo "<img src='Upload/". $row['image']."' style='width:500px; height=300px;'>";
+				echo "<img src='Upload/". $row['image']."' style='width:500px; height=300px;'><br><br>";
 				echo $row['datetime'];
-				echo '<p style="text-align: justify;">'.$row["content"].'</p>';
+				echo '<p style="Font-size: 80px;">'.$row["content"].'</p>';
 				
 				$name = get_name($row['user_id'], $conn);
 				echo '<p> Created By - '.$name.'</p>';

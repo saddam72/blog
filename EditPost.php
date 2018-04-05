@@ -30,6 +30,7 @@ if(isset($_POST['submit'])) {
   if (mysqli_query($conn, $sql))
   {
     $msg[]='<h3>Post Update is successfull!</h3>';
+    header("Location: dashboard.php");
   } else {
     $msg[]='<h3><strong>Sorry</strong>Post Update is not successfully!</h3>';
   }
