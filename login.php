@@ -64,7 +64,7 @@ if ($_POST) {
 		</nav>
 	</header>
 	<section class="container">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-8 col-md-offset-2">
 			<br><br>
 			<div class="panel panel-success">
 				<div class="panel-heading">
@@ -74,17 +74,28 @@ if ($_POST) {
 							echo $value;
 						} 
 						?>
+						<h4>Login Form</h4>
 						<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-							<h4>Login Form</h4>
+							
 							<div class="form-group">
 								<label for="email">Email:</label>
+								<div class="input-group">
+								<span class="input-group-addon">
+								<span class="glyphicon glyphicon-envelope text-info"></span>
+								</span>
 								<input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
 							</div>
+							</div>
 							<div class="form-group">
+							
 								<label for="password">Password:</label>
+								<div class="input-group">
+								<span class="input-group-addon">
+								<span class="glyphicon glyphicon-lock text-info"></span>
+								</span>
 								<input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
 							</div>
-
+							</div>
 							<div class="checkbox">
 								<label><input type="checkbox">Remember me</label>
 							</div>

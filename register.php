@@ -53,20 +53,40 @@ if ($_POST) {
         <form action="register.php" method="POST">
           <h4>Register Form</h4>
           <div class="form-group">
-           <label for="text">Name:</label>
-           <input type="name" name="name" class="form-control" id="name" placeholder="Name" required>
+           <label for="text">UserName:</label>
+           <div class="input-group">
+								<span class="input-group-addon">
+								<span class="glyphicon glyphicon-user text-info"></span>
+								</span>
+           <input type="name" name="name" class="form-control" id="name" placeholder="User Name" required>
+         </div>
          </div>
          <div class="form-group">
            <label for="email">Email:</label>
-           <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
+           <div class="input-group">
+								<span class="input-group-addon">
+								<span class="glyphicon glyphicon-envelope text-info"></span>
+								</span>
+           <input type="email" name="email" class="form-control" id="email" placeholder="Email Address" required>
+         </div>
          </div>
          <div class="form-group">
            <label for="email">Mobile:</label>
-           <input type="text" name="mobile" class="form-control" id="mobile" placeholder="Mobile">
+           <div class="input-group">
+								<span class="input-group-addon">
+								<span class="glyphicon glyphicon-font awesome text-info"></span>
+						</span>
+           <input type="number" name="mobile" class="form-control" id="mobile" placeholder="Mobile Number">
+         </div>
          </div>
          <div class="form-group">
           <label for="password">Password:</label>
+          <div class="input-group">
+								<span class="input-group-addon">
+								<span class="glyphicon glyphicon-lock text-info"></span>
+								</span>
           <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+        </div>
         </div>
         <button type="submit" class="btn btn-success">Register</button>
         Already have an account <a href="login.php">Please Login</a>

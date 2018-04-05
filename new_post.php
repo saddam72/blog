@@ -11,16 +11,21 @@ require "db_controller.php";
 
 $msg=array();
 if ($_POST) {
+  date_default_timezone_set("Asia/Dhaka");
+  $currenttime = time();
+  //$datetime = strftime("%y-%m-%d %H:%M:%S", $currenttime);
+  $datetime = strftime("%B-%d-%Y %H:%M:%S", $currenttime);
+  $datetime;
+  $admin="saddam hossan";
 	$title=$_POST['title'];
   $user_id=$_SESSION['user_id'];
   $category=$_POST['category'];
   $image=$_FILES['image']['name'];
-  $author=$_POST['author'];
   $content=$_POST['content'];
   $target = "Upload/".basename($_FILES['image']['name']);
 
   $sql="INSERT INTO post(title, user_id, category, author, image, content)
-  VALUES('$title', '$user_id', '$category', 'author', '$image', '$content')";
+  VALUES('$title', '$user_id', '$category', '$admin', '$image', '$content')";
   move_uploaded_file($_FILES['image']['tmp_name'],$target);
 
   if (mysqli_query($conn, $sql))
@@ -50,14 +55,14 @@ if ($_POST) {
 <h1 >BLOG</h1>
 <ul class="nav nav-pills nav-stacked">
 <li><a href="dashboard.php">
-<span class="glyphicon glyphicon-th"></span>&nbsp;&nbsp;Blog</a></li>
-<li><a href="home.php">
-<span class="glyphicon glyphicon-user"></span>&nbsp;Home</a></li>
+<span class="glyphicon glyphicon-th"></span>&nbsp;&nbsp;Dashboard</a></li>
+<li><a href="admin.php">
+<span class="glyphicon glyphicon-user"></span>&nbsp;Admin Manage</a></li>
 <li class="active"><a href="new_post.php">
 <span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Add New Post</a></li>
 <li><a href="about.php">
 <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;About us</a></li>
-<li><a href="#">
+<li><a href="contact.php">
 <span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Contact us</a></li>
 <li><a href="logout.php">
 <span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a></li>
@@ -87,9 +92,6 @@ if ($_POST) {
            <div class="form-group">
              <label for="imageselect">Select Image:</label>
              <input type="file" name="image" class="form-control" id="image">
-           </div>
-           <div class="form-group">
-             <input type="name" name="author" class="form-control">
            </div>
            <div class="form-group">
             <label for="content">Content:</label>

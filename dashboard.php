@@ -1,12 +1,20 @@
 <?php 
+session_start();
+
 require "header.php";
 require "session.php";
 require "function.php";
 require "db_controller.php";
+
+if(!isset($_SESSION['login'])) 
+   {
+  header('location: login.php');
+}
 ?>
 <!DOCTYPE html>
 <html>
 <head> 
+   <!--<div class="Line" style="height: 10px; background: #27aae1;"></div> -->
 	<title>Admin Dashboard</title>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -29,7 +37,7 @@ require "db_controller.php";
     <ul class="nav nav-pills nav-stacked">
     <li class="active"><a href="dashboard.php">
     <span class="glyphicon glyphicon-th"></span>&nbsp;&nbsp;Dashboard</a></li>
-    <li><a href="#">
+    <li><a href="admin.php">
     <span class="glyphicon glyphicon-user"></span>&nbsp;Manage Admin</a></li>
     <li><a href="new_post.php">
     <span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Add New Post</a></li>
@@ -84,25 +92,23 @@ require "db_controller.php";
                      <td><img src="Upload/<?php echo $Image; ?>" width="100px"; height="40px"></td>
                      <td><?php echo $Category; ?></td>
                      <td>
-                     <a href="EditPost.php?Edit=<?php echo $id; ?>"> 
+                     <a href="EditPost.php?Edit=<?php echo $row['id']; ?>">
                      <span class="btn btn-warning">Edit</span>
                      </a>
-                      <a href="DeletePost.php?Delete=<?php echo $id; ?>"> 
+                      <a href="DeletePost.php?Delete=<?php echo $row['id']; ?>"> 
                       <span class="btn btn-danger">Delete</span> 
                       </a>
                       </td>
                      <td>
-                     <a href="FullPost.php?id=<?php echo $id; ?>" target="_blank">
+                     <a href="FullPost.php?id=<?php echo $row['id']; ?>" target="_blank">
                      <span class="btn btn-primary">Live Preview</span>
                      </td>
                    </tr>
 
 
              <?php } ?>
-               
         </table>
     </div>
-
      </div>
     </div>
     </div>

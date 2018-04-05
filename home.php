@@ -25,15 +25,15 @@ if(!isset($_SESSION['login']))
 <div class="col-sm-2" style="background-color:lightblue">
 <h1 >BLOG</h1>
 <ul class="nav nav-pills nav-stacked">
-<li><a href="#">
-<span class="glyphicon glyphicon-th"></span>&nbsp;&nbsp;Blog</a></li>
-<li class="active"><a href="home.php">
-<span class="glyphicon glyphicon-user"></span>&nbsp;Home</a></li>
+<li><a href="dashboard.php">
+<span class="glyphicon glyphicon-th"></span>&nbsp;&nbsp;Dashboard</a></li>
+<li><a href="admin.php">
+<span class="glyphicon glyphicon-user"></span>&nbsp;Admin Manage</a></li>
 <li><a href="new_post.php">
 <span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Add New Post</a></li>
 <li><a href="about.php">
 <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;About us</a></li>
-<li><a href="#">
+<li><a href="contact.php">
 <span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Contact us</a></li>
 <li><a href="logout.php">
 <span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a></li>
@@ -49,7 +49,8 @@ if(!isset($_SESSION['login']))
 
 			//var_dump($search);
 
-			$sql="SELECT * FROM post WHERE title LIKE '%$search%' OR content LIKE '%$search%' OR category LIKE '%$search%'";
+			$sql="SELECT * FROM post WHERE title LIKE '%$search%' OR 
+			content LIKE '%$search%' OR category LIKE '%$search%'";
             }else {
             //  $sql="SELECT * FROM post";
 			 $sql = "SELECT * FROM post order by id desc";
@@ -66,10 +67,13 @@ if(!isset($_SESSION['login']))
 				 $title=$row['title'];
 				 $content=$row['content'];
 				 $category=$row['category'];
+				 $datetime=$row['datetime'];
 
 				echo '<h4>'.$row["title"] . '</h4>';
-				echo '<h4>'.$row["category"] .'</h4>';
+				echo "<hr>";
+				echo '<h5>'.$row["category"] .'</h5>';
 				echo "<img src='Upload/". $row['image']."' style='width:500px; height=300px;'>";
+				echo $row['datetime'];
 				echo '<p style="text-align: justify;">'.$row["content"].'</p>';
 				
 				$name = get_name($row['user_id'], $conn);

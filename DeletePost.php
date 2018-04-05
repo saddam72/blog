@@ -11,17 +11,13 @@ require "db_controller.php";
 
 $msg=array();
 if(isset($_POST['submit'])) {
-	$title=$_POST['title'];
   $user_id=$_SESSION['user_id'];
-  $category=$_POST['category'];
   $admin="saddam hossan";
   $image=$_FILES['image']['name'];
-  $content=$_POST['content'];
   $target = "Upload/".basename($_FILES['image']['name']);
    
-  $EditFromURL=$_GET['Edit'];
-  $sql="UPDATE post SET title='$title', category='$category', author='$admin', 
-  image='$image', content='$content' WHERE id='$EditFromURL'";
+  $DeleteFromURL=$_GET['Delete'];
+  $sql="DELETE FROM post WHERE id='$DeleteFromURL'";
 
   //die($sql);
 
@@ -29,9 +25,11 @@ if(isset($_POST['submit'])) {
 
   if (mysqli_query($conn, $sql))
   {
-    $msg[]='<h3>Post Update is successfull!</h3>';
+    $msg[]='<h3>Post Delete is successfull!</h3>';
+    header("Location: dashboard.php");
   } else {
-    $msg[]='<h3><strong>Sorry</strong>Post Update is not successfully!</h3>';
+    $msg[]='<h3><strong>Sorry</strong>Post Delete is not successfully!</h3>';
+    header("Location: dashboard.php");
   }
 }
 
@@ -39,7 +37,7 @@ if(isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Edit Post</title>
+	<title>Delete Post</title>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -72,7 +70,7 @@ if(isset($_POST['submit'])) {
    <div class="col-md-10 col-md-offset-0">
      <div class="panel panel-success">
      	<div class="panel-heading">
-     		<h3>Update Post</h3>
+     		<h3>Delete Post</h3>
      		<div class="panel-body">
            <?php foreach ($msg as $key => $value) 
            {
@@ -81,7 +79,7 @@ if(isset($_POST['submit'])) {
           ?>	
 
           <?php
-          $SearchQueryParameter=$_GET['Edit'];
+          $SearchQueryParameter=$_GET['Delete'];
           $sql="SELECT * FROM post WHERE id='$SearchQueryParameter'";
           $ResultSql=mysqli_query($conn, $sql);
           while($row=mysqli_fetch_array($ResultSql)) {
@@ -92,36 +90,32 @@ if(isset($_POST['submit'])) {
 
           }
           ?>
-          <!--<form action="test.php" method="post">
-          <input type="hidden" name="id" value="010">
-          <input type="submit" value="Submit">
-          </form>-->
-          <form action="EditPost.php?Edit=<?php echo $SearchQueryParameter; ?>" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="id" value="<?php echo $SearchQueryParameter; ?>">
+          <form action="DeletePost.php?Delete=<?php echo $SearchQueryParameter; ?>" method="POST" enctype="multipart/form-data">
+           <!-- <input type="hidden" name="id" value="<?php //echo $SearchQueryParameter; ?>"> -->
            <div class="form-group">
              <label for="title">Title:</label>
-             <input value="<?php echo $TitleToBeUpdated; ?>" type="name" name="title" class="form-control" id="title" placeholder="Title..." required>
+             <input Disabled value="<?php echo $TitleToBeUpdated; ?>" type="name" name="title" class="form-control" id="title" placeholder="Title..." required>
            </div>
            <div class="form-group">
            <span class="form-group">Existing Category: </span>
            <?php echo $CategoryToBeUpdated; ?>
            <br>
              <label for="categoryselect">Category:</label>
-             <input name="category" class="form-control" id="categoryselect" placeholder="Select Category" require>
+             <input Disabled name="category" class="form-control" id="categoryselect" placeholder="Select Category" require>
            </div>
            <div class="form-group">
            <span class="form-group">Existing Image: </span>
            <img src="Upload/<?php echo $ImageToBeUpdated; ?>" width=150px; height=60px;>
            <br>
              <label for="imageselect">Select Image:</label>
-             <input type="file" name="image" class="form-control" id="image">
+             <input Disabled type="file" name="image" class="form-control" id="image">
            </div>
            <div class="form-group">
             <label for="content">Content:</label>
-            <textarea name="content" class="form-control" rows="5" id="content" id="editor">
+            <textarea Disabled name="content" class="form-control" id="content" id="editor">
             <?php echo $ContentToBeUpdated; ?> </textarea>
           </div>           
-          <button type="submit" class="btn btn-success" name='submit'>Update Post</button>
+          <button type="submit" class="btn btn-danger" name='submit'>Delete Post</button>
         </form>
       </div>
     </div>
