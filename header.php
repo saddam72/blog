@@ -33,25 +33,32 @@ while($DataRows=mysqli_fetch_array($sql)){
 </head>
 <body>
 	<header>
-   <nav class="navbar navbar-inverse">
+   <nav class="navbar navbar-fixed-top navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
+      <button type="button" class="navbar-toggle" date-toggle="collapse" date-target="#">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
         <a class="navbar-brand" href="#"><strong>Wellcome to our blogsite</strong></a>
       </div>
       <ul class="nav navbar-nav">
         <li><a href="home.php">Home</a></li>
-        <li><a href="#">Service</a></li>
+        <li><a href="service.php">Service</a></li>
         <li><a href="about.php">About us</a></li>
-        <li><a href="#">Contuct us</a></li>
+        <li><a href="contact.php">Contuct us</a></li>
       </ul>
-      <div class="row" style="text-align: right; padding: 10px;">
-        <form class="form-inline" action="home.php" method="POST">
+      <!--<div class="row" style="text-align: right; padding: 0px;">-->
+        <form class="navbar-form navbar-right" action="home.php" method="POST">
           <input class="form-control" type="text" name="search" placeholder="Search">
           <button class="btn btn-success glyphicon glyphicon-search" name="searchbutton"></button>
         </form>
-      </div>
+        
     </div>
   </nav>
+  <div class="Line" style="height: 60px; background: #27aae1;"></div>
   <!-- <div class="Line" style="height: 10px; background: #27aae1;"></div> -->
 </header>
 </body>

@@ -71,7 +71,7 @@ body{
 <span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Add New Post</a></li>
 <li class="active"><a href="category.php">
 <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;Categories</a></li>
-<li><a href="#">
+<li><a href="contact.php">
 <span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Comments</a></li>
 <li><a href="logout.php">
 <span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a></li>

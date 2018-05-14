@@ -74,7 +74,7 @@ if ($_POST) {
            <label for="email">Mobile:</label>
            <div class="input-group">
 								<span class="input-group-addon">
-								<span class="glyphicon glyphicon-font awesome text-info"></span>
+								<span class="glyphicon glyphicon-phone-alt text-info"></span>
 						</span>
            <input type="number" name="mobile" class="form-control" id="mobile" placeholder="Mobile Number">
          </div>

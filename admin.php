@@ -1,14 +1,9 @@
-
 <?php
-session_start();
 require "header.php";
 require "db_controller.php";
 require "session.php";
 require "function.php";
 
-if(!isset($_SESSION['login'])) 
-   {
-header('location: login.php');
 if(isset($_POST['submit'])){
     $username=mysqli_real_escape_string($conn,$_POST['username']);
     $password=mysqli_real_escape_string($conn,$_POST['password']);
@@ -48,7 +43,6 @@ if(isset($_POST['submit'])){
     
 }
 
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -81,8 +75,8 @@ body{
 <span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Add New Post</a></li>
 <li><a href="category.php">
 <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;Categories</a></li>
-<li><a href="#">
-<span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Comments</a></li>
+<li><a href="contact.php">
+<span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Contact</a></li>
 <li><a href="logout.php">
 <span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a></li>
 </ul>

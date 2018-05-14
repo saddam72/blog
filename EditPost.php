@@ -62,7 +62,7 @@ if(isset($_POST['submit'])) {
 <span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Add New Post</a></li>
 <li><a href="about.php">
 <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;About us</a></li>
-<li><a href="#">
+<li><a href="contact.php">
 <span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Contact us</a></li>
 <li><a href="logout.php">
 <span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a></li>

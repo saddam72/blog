@@ -1,4 +1,3 @@
-
 <?php 
 session_start();
 
@@ -14,7 +13,7 @@ if(!isset($_SESSION['login']))
 <!DOCTYPE html>
 <html>
 <head>
-	<title> Blog Site</title>
+	<title> Full Post</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -26,12 +25,10 @@ if(!isset($_SESSION['login']))
 <div class="col-sm-2" style="background-color:lightblue">
 <h1 >BLOG</h1>
 <ul class="nav nav-pills nav-stacked">
-<li class="active"><a href="home.php">
-<span class="glyphicon glyphicon-th"></span>&nbsp;&nbsp;Home</a></li>
-<li><a href="service.php">
-<span class="glyphicon glyphicon-user"></span>&nbsp;Service</a></li>
-<li><a href="category.php">
-<span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;Category</a></li>
+<li><a href="dashboard.php">
+<span class="glyphicon glyphicon-th"></span>&nbsp;&nbsp;Dashboard</a></li>
+<li><a href="admin.php">
+<span class="glyphicon glyphicon-user"></span>&nbsp;Admin Manage</a></li>
 <li><a href="new_post.php">
 <span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Add New Post</a></li>
 <li><a href="about.php">
@@ -46,28 +43,14 @@ if(!isset($_SESSION['login']))
 	<div class="container-fluid">
 	<div class="col-sm-10">
 		<?php
-		include "db_controller.php";
-		if(isset($_POST["searchbutton"])) {
-		   /*date_default_timezone_set("Asia/Dhaka");
-            $currenttime = time();
-            //$datetime = strftime("%y-%m-%d %H:%M:%S", $currenttime);
-            $datetime = strftime("%B-%d-%Y %H:%M:%S", $currenttime);
-            $datetime; */
-			$search=$_POST["search"];
+        include "db_controller.php";
+        
+             $PreviewFromURL=$_GET['Preview'];
+		     $sql="SELECT * FROM post";
+          
+		     $result = mysqli_query($conn, $sql);
 
-			//var_dump($search);
-
-			$sql="SELECT * FROM post WHERE title LIKE '%$search%' OR 
-			content LIKE '%$search%' OR category LIKE '%$search%'";
-            }else {
-            //  $sql="SELECT * FROM post";
-			 $sql = "SELECT * FROM post order by id desc";
-			}
-		 $result = $conn->query($sql);
-
-		 if ($result->num_rows > 0) {
-
-			while($row = $result->fetch_assoc()) {
+		      $row = mysqli_fetch_array($result);
 				// echo "<pre>";
 				// var_dump($row);
 				// die();
@@ -85,34 +68,19 @@ if(!isset($_SESSION['login']))
 				echo $row['datetime'];
 				echo "<div align='justify'>";
 				echo '<p style="Font-size: 80px;">'.$row["content"].'</p>';
-				echo "</div>";
-				
-				$name = get_name($row['user_id'], $conn);
-				echo '<p> Created By - '.$name.'</p>';
+                echo "</div>";
+                
 
-			}
-		} else {
-			echo "0 results";
-		}
-
-
-		function get_name($id, $conn)
-		{
-			$name = "";
-
-				$name_sql = "select name from member where id =".$id.";";
-				$name_result = $conn->query($name_sql);
-				if ($name_result->num_rows > 0) {
-					while ($name_row = $name_result->fetch_assoc()) {
-						$name = $name_row['name'];
-					}
-				}
-
-			return $name;
-		}
-
-
-		$conn->close();
+               $SearchQueryParameter=$_GET['Preview'];
+               $sql="SELECT * FROM post WHERE id='$SearchQueryParameter'";
+               $ResultSql=mysqli_query($conn, $sql);
+               while($row=mysqli_fetch_array($ResultSql)) {
+               $TitleToBeUpdated=$row['title'];
+               $CategoryToBeUpdated=$row['category'];
+               $ImageToBeUpdated=$row['image'];
+               $ContentToBeUpdated=$row['content'];
+   
+               }
 		
 		?>
 		</div>

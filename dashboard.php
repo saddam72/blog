@@ -43,8 +43,8 @@ if(!isset($_SESSION['login']))
     <span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Add New Post</a></li>
     <li><a href="category.php">
     <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;Category</a></li>
-    <li><a href="#">
-    <span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Comments</a></li>
+    <li><a href="contact.php">
+    <span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Contact</a></li>
     <li><a href="logout.php">
     <span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a></li>
     </ul>
@@ -100,12 +100,10 @@ if(!isset($_SESSION['login']))
                       </a>
                       </td>
                      <td>
-                     <a href="FullPost.php?id=<?php echo $row['id']; ?>" target="_blank">
+                     <a href="FullPost.php?Preview=<?php echo $row['id']; ?>" target="_blank">
                      <span class="btn btn-primary">Live Preview</span>
                      </td>
                    </tr>
-
-
              <?php } ?>
         </table>
     </div>

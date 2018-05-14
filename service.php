@@ -26,13 +26,13 @@ if(!isset($_SESSION['login']))
 <ul class="nav nav-pills nav-stacked">
 <li><a href="home.php">
 <span class="glyphicon glyphicon-th"></span>&nbsp;&nbsp;Home</a></li>
-<li><a href="service.php">
+<li class="active"><a href="service.php">
 <span class="glyphicon glyphicon-user"></span>&nbsp;Service</a></li>
 <li><a href="category.php">
 <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;Category</a></li>
 <li><a href="new_post.php">
 <span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Add New Post</a></li>
-<li class="active"><a href="about.php">
+<li><a href="about.php">
 <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;About us</a></li>
 <li><a href="contact.php">
 <span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Contact us</a></li>
@@ -43,7 +43,7 @@ if(!isset($_SESSION['login']))
 </div>
 <div class="container">
 <div align="center">
-<h3><strong><span class="text-primary">About Us</span></strong></h3>
+<h3><strong><span class="text-success">Terms of Service</span></strong></h3>
 </div>
 	<div class="col-sm-10" align="justify">
     <p>
@@ -68,11 +68,7 @@ if(!isset($_SESSION['login']))
 	</div>
 	</div>
 	</div>
-	<hr>
-	<div align="center">
-	<br><p><h2>Md. Saddam Hossan</h2><h4>Address: Baridhara DOHS, Dhaka-1206,
-	Bangladesh.<br>Gmail: codalosdm@gmail.com<br>Mobile: 01918565714</h4></p>
-	</div>
+    <hr>
 <?php require "footer.php";?>
 </body>
 </html>

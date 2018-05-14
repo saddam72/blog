@@ -24,7 +24,7 @@ if ($_POST) {
   $content=$_POST['content'];
   $target = "Upload/".basename($_FILES['image']['name']);
 
-  $sql="INSERT INTO post(datetime,title, user_id, category, author, image, content)
+  $sql="INSERT INTO post(datetime, title, user_id, category, author, image, content)
   VALUES('$datetime','$title', '$user_id', '$category', '$admin', '$image', '$content')";
   move_uploaded_file($_FILES['image']['tmp_name'],$target);
 
@@ -50,14 +50,17 @@ if ($_POST) {
 </head>
 <body>
   <?php require "header.php";?>
+  <div class ="container-fluid">
   <div class="raw">
 <div class="col-sm-2" style="background-color:lightblue">
 <h1 >BLOG</h1>
 <ul class="nav nav-pills nav-stacked">
-<li><a href="dashboard.php">
-<span class="glyphicon glyphicon-th"></span>&nbsp;&nbsp;Dashboard</a></li>
-<li><a href="admin.php">
-<span class="glyphicon glyphicon-user"></span>&nbsp;Admin Manage</a></li>
+<li><a href="home.php">
+<span class="glyphicon glyphicon-th"></span>&nbsp;&nbsp;Home</a></li>
+<li><a href="service.php">
+<span class="glyphicon glyphicon-user"></span>&nbsp;Service</a></li>
+<li><a href="category.php">
+<span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;Category</a></li>
 <li class="active"><a href="new_post.php">
 <span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Add New Post</a></li>
 <li><a href="about.php">
@@ -87,7 +90,15 @@ if ($_POST) {
            </div>
            <div class="form-group">
              <label for="categoryselect">Category:</label>
-             <input name="category" class="form-control" id="categoryselect" placeholder="Select Category" require>
+             <select class="form-control" id="categoryselect" name="Category">
+             <option>HTML</option>
+		         <option>PHP</option>
+		         <option>CSS</option>
+		         <option>JAVASCRIPT</option>
+		         <option>JAVA</option>
+		         <option>MYSQL</option>
+		         <option>NEWS</option>
+             </select>
            </div>
            <div class="form-group">
              <label for="imageselect">Select Image:</label>
@@ -102,6 +113,7 @@ if ($_POST) {
       </div>
     </div>
   </div>
+</div>
 </div>
 </section>
 <?php require "footer.php";?>
